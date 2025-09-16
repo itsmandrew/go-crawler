@@ -14,7 +14,11 @@ func normalizeUrl(urlString string) (string, error) {
 	urlObject, err := url.Parse(urlString)
 
 	if err != nil {
-		return "", err
+		return "", errors.New("invalid url")
+	}
+
+	if urlObject.Host == "" {
+		return "", errors.New("invalid url")
 	}
 
 	return urlObject.Host + urlObject.Path, nil

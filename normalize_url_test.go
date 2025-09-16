@@ -24,6 +24,12 @@ func TestNormalizeUrl(t *testing.T) {
 			expected:      "",
 			expectedError: errors.New("url is empty"),
 		},
+		{
+			name:          "invalid url with empty host",
+			inputURL:      "http://",
+			expected:      "",
+			expectedError: errors.New("invalid url"),
+		},
 	}
 
 	for i, tc := range tests {
